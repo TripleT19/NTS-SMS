@@ -1,0 +1,16 @@
+{
+  "name": "NTS-SMS Development",
+  "dockerComposeFile": "../docker-compose.yml",
+  "service": "backend",
+  "workspaceFolder": "/workspaces/NTS-SMS",
+  "shutdownAction": "stopCompose",
+  "forwardPorts": [8000, 3000, 3306],
+  "features": {
+    "ghcr.io/devcontainers/features/docker-outside-of-docker:1": {},
+    "ghcr.io/devcontainers/features/node:1": {
+      "version": "20"
+    }
+  },
+  "remoteUser": "vscode",
+  "postCreateCommand": "bash .devcontainer/post-create.sh"
+}

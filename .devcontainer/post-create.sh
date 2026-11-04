@@ -14,6 +14,14 @@ echo "Composer version:"
 composer --version
 
 echo ""
+echo "Node version:"
+node -v
+
+echo ""
+echo "npm version:"
+npm -v
+
+echo ""
 echo "Checking required PHP extensions..."
 
 missing=0
@@ -30,6 +38,12 @@ if [ "$missing" -ne 0 ]; then
     echo ""
     echo "ERROR: Some PHP extensions are missing. Check the Dockerfile."
     exit 1
+fi
+
+echo ""
+echo "Installing frontend dependencies (if needed)..."
+if [ -f frontend/package.json ] && [ ! -d frontend/node_modules ]; then
+    (cd frontend && npm ci)
 fi
 
 echo ""
